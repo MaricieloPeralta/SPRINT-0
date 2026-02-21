@@ -1,6 +1,6 @@
 const nombreHeroe = "Batman";
 const poder = "Aparatos de todo tipo?"
-let nivelEnergia = 88
+let nivelEnergia = 90
 const ciudad = "Ciudad Gótica"
 const enemigo = "Jocker"
 
