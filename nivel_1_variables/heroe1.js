@@ -1,6 +1,6 @@
 const nombreHeroe = "Naruto Uzumaki";
 const poder = "Rasengan y clones de sombra";
-let nivelEnergia = 90;
+let nivelEnergia = 100;
 const ciudad = "Aldea Oculta de la Hoja";
 const enemigo = "Madara Uchiha";
 
