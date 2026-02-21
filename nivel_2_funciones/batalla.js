@@ -6,9 +6,9 @@ function ataque(){
 function recargarEnergia(){
     console.log("Batman recarga su energía")
 }
-
-
-
+function escudoMágico(){
+    console.log("Batman activa su escudo mágico!!!")
+}
 
 
 
@@ -17,3 +17,4 @@ function recargarEnergia(){
 ataque()
 
 recargarEnergia()
+escudoMágico()
