@@ -24,3 +24,9 @@ function mostrarEstado(cliente) {
     console.log(`Dinero: S/.${cliente.dinero}`);
     console.log(`Hambre: ${cliente.hambre}`);
 }
+
+mostrarEstado(cliente);
+console.log("----------------------------------------")
+ordenarComida(cliente);
+pagar(cliente);
+mostrarEstado(cliente);
