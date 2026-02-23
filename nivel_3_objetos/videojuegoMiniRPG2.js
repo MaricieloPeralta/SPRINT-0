@@ -21,3 +21,20 @@ function subirNivel(jugador) {
     jugador.vida += 25;
     console.log(`${jugador.nombre} subió al nivel ${jugador.nivel}!`);
 }
+
+function mostrarEstado(jugador) {
+    console.log("\n");
+    console.log(`           Estado del jugador`);
+    console.log("----------------------------------------");
+    console.log(`Nombre: ${jugador.nombre}`);
+    console.log(`Vida: ${jugador.vida}`);
+    console.log(`Fuerza: ${jugador.fuerza}`);
+    console.log(`Nivel: ${jugador.nivel}`);
+}
+
+mostrarEstado(jugador);
+console.log("----------------------------------------")
+atacar(jugador);
+recibirDmg(jugador);
+subirNivel(jugador);
+mostrarEstado(jugador);
