@@ -13,3 +13,7 @@ function defender() {
     energiaHeroe += 5;
     console.log(${heroe} se defiende. Energía restante: ${energiaHeroe});
 }
+function recargarEnergia() {
+    energiaHeroe += 10;
+    console.log(${heroe} recarga energía. Energía actual: ${energiaHeroe});
+}
