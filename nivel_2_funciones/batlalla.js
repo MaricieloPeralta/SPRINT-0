@@ -26,3 +26,13 @@ function escudoMagico() {
     energiaHeroe += 15;
     console.log(`${heroe} recarga energía. Energía actual: ${energiaHeroe} `)
 }
+
+console.log(" ------------COMIENZA LA BATALLA ------------");
+
+atacar();
+defender();
+recargarEnergia();
+superAtaque();
+escudoMagico();
+
+console.log(" ------------FIN DE LA BATALLA ------------");
