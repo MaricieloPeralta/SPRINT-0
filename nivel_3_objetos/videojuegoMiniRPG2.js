@@ -9,3 +9,8 @@ function atacar(jugador) {
     jugador.fuerza += 10;
     console.log(`${jugador.nombre} ataca!. Fuerza actual: ${jugador.fuerza}`);
 }
+
+function recibirDmg(jugador) {
+    jugador.vida -= 20;
+    console.log(`${jugador.nombre} recibe daño. Vida actual: ${jugador.vida}`);
+}
