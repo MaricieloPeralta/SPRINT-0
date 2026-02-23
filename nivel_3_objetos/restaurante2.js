@@ -6,7 +6,7 @@ const cliente = {
 
 function ordenarComida(cliente) {
     cliente.hambre -= 30;
-    console.log(`${cliente.nombre} ordenó su comida. Hambre actual: ${cliente.hambre}`);
+    console.log(`${cliente.nombre} ordenó bulgogui. Hambre actual: ${cliente.hambre}`);
 }
 
 function pagar(cliente) {
@@ -20,7 +20,7 @@ function pagar(cliente) {
 }
 
 function mostrarEstado(cliente) {
-    console.log(`--- Estado Actualde ${cliente.nombre} ---`);
+    console.log(`--- Estado Actual de ${cliente.nombre} ---`);
     console.log(`Dinero: S/.${cliente.dinero}`);
     console.log(`Hambre: ${cliente.hambre}`);
 }
