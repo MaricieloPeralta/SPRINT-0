@@ -6,14 +6,17 @@ let energiaEnemigo = 100;
 
 function atacar() {
     energiaEnemigo -= 10;
-    console.log(${heroe} ataca a ${enemigo}. Energía restante: ${energiaEnemigo});
+    console.log(`${heroe} ataca a ${enemigo}. Energía restante: ${energiaEnemigo}`);
 }
-
 function defender() {
     energiaHeroe += 5;
-    console.log(${heroe} se defiende. Energía restante: ${energiaHeroe});
+    console.log(`${heroe} se defiende. Energía restante: ${energiaHeroe}`);
 }
 function recargarEnergia() {
     energiaHeroe += 10;
-    console.log(${heroe} recarga energía. Energía actual: ${energiaHeroe});
+    console.log(`${heroe} recarga energía. Energía actual: ${energiaHeroe}`);
+}
+function escudoMagico() {
+    energiaHeroe += 15;
+    console.log(`${heroe} recarga energía. Energía actual: ${energiaHeroe} `)
 }
