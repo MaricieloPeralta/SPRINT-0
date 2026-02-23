@@ -18,3 +18,9 @@ function pagar(cliente) {
         console.log(`${cliente.nombre} no tiene dinero suficiente para pagar la cuenta`);
     }
 }
+
+function mostrarEstado(cliente) {
+    console.log(`--- Estado Actualde ${cliente.nombre} ---`);
+    console.log(`Dinero: S/.${cliente.dinero}`);
+    console.log(`Hambre: ${cliente.hambre}`);
+}
