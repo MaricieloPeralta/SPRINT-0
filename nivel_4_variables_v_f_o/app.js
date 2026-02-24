@@ -49,3 +49,14 @@ function agregarPlatoDemo() {
  const nuevoPlato = { nombre: "Pollo a la brasa", precio: 20, stock: 4 };
  menu.push(nuevoPlato);
 }
+// FUNCIÓN: contar platos con stock mayor a 5
+function contarPlatosConStockMayorA5() {
+    let contador = 0;
+    for (let i = 0; i < menu.length; i++) {
+        if (menu[i].stock > 5) {
+            contador++;
+        }
+    }
+    return contador;
+    
+}
