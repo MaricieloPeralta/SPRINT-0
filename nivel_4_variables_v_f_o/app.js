@@ -46,8 +46,8 @@ function renderMenu() {
 
 // 3) FUNCIÓN: agregar un plato demo al menú
 function agregarPlatoDemo() {
- const nuevoPlato = { nombre: "Pollo a la brasa", precio: 20, stock: 4 };
- menu.push(nuevoPlato);
+    const nuevoPlato = { nombre: "Aji de pollo", precio: 16, stock: 6 };
+    menu.push(nuevoPlato);
 }
 
 // 4) EVENTOS: conectar botones con funciones
