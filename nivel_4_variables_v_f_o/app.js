@@ -45,9 +45,13 @@ function renderMenu() {
 }
 
 // 3) FUNCIÓN: agregar un plato demo al menú
+let platoAgregado = false;
 function agregarPlatoDemo() {
-    const nuevoPlato = { nombre: "Aeropuerto", precio: 16, stock: 6 };
-    menu.push(nuevoPlato);
+    if (platoAgregado == false) {
+        const nuevoPlato = { nombre: "Aeropuerto", precio: 16, stock: 6 };
+        menu.push(nuevoPlato);
+        platoAgregado = true;
+    }
 }
 
 // 4) EVENTOS: conectar botones con funciones
