@@ -49,6 +49,17 @@ function agregarPlatoDemo() {
  const nuevoPlato = { nombre: "Pollo a la brasa", precio: 20, stock: 4 };
  menu.push(nuevoPlato);
 }
+
+// 4) EVENTOS: conectar botones con funciones
+document.getElementById("btnMostrar").addEventListener("click", () => {
+ renderMenu();
+});
+
+document.getElementById("btnAgregar").addEventListener("click", () => {
+ agregarPlatoDemo();
+ renderMenu();
+});
+
 // FUNCIÓN: contar platos con stock mayor a 5
 function contarPlatosConStockMayorA5() {
     let contador = 0;
