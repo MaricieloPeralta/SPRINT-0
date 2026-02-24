@@ -40,8 +40,8 @@ function renderMenu() {
    html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
  }
     html += "</ul>";
-    output.innerHTML = html;
     html += `<p>Total de platos en el menú: ${menu.length}</p>`;
+    output.innerHTML = html;
 }
 
 // 3) FUNCIÓN: agregar un plato demo al menú
