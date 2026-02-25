@@ -80,6 +80,29 @@ function buscarPlatoPorNombre(nombre) {
     output.innerHTML = html;
 }
 
+// FUNCIÓN: Ver stock bajo (<= 3)
+function filtrarStockBajo() {
+    const output = document.getElementById("output2");
+    output.innerHTML = "";
+
+    const platosStockBajo = menu.filter(plato => plato.stock <= 3);
+
+    if (platosStockBajo.length === 0) {
+        output.innerHTML = "<p>No hay platos con stock bajo</p>";
+        return;
+    }
+
+    let html = "<ul>";
+
+    for (let i = 0; i < platosStockBajo.length; i++) {
+        const plato = platosStockBajo[i];
+        html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
+    }
+
+    html += "</ul>";
+    output.innerHTML = html;
+}
+
 // 4) EVENTOS: conectar botones con funciones
 document.getElementById("btnMostrar").addEventListener("click", () => {
  renderMenu();
