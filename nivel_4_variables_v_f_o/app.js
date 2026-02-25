@@ -80,7 +80,6 @@ function buscarPlatoPorNombre() {
     const input = document.getElementById("inputBuscar");
     const texto = input.value.toLowerCase();
     const output = document.getElementById("output2");
-    output.innerHTML = "";
     let html = "<ul>";
     const platoEncontrado = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
     if (platoEncontrado) {
