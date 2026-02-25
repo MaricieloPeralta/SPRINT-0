@@ -147,3 +147,28 @@ document.getElementById("btnStockBajo").addEventListener("click", () => {
 document.getElementById("btnResumen").addEventListener("click", () => {
     verResumen();
 });
+// -----------------EJERCICIO VENDER-----------------
+
+// Boton Buscar en Tiendita
+document.getElementById("btnBuscarTiendita").addEventListener("click", () => {
+    const texto = document.getElementById("inputBuscarTiendita").value.toLowerCase();
+    const output = document.getElementById("outputTiendita");
+    const divCompra = document.getElementById("output3");
+
+    const plato = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
+
+    if (plato && plato.stock > 0) {
+        output.innerHTML = `
+            <p>
+                ${plato.nombre} — S/ ${plato.precio} <br>
+                Stock disponible: ${plato.stock}
+            </p>
+        `;
+
+        // Mostrar sección de compra
+        divCompra.style.display = "block";
+    } else {
+        output.innerHTML = "<p>No hay stock o no existe el plato</p>";
+        divCompra.style.display = "none";
+    }
+});
