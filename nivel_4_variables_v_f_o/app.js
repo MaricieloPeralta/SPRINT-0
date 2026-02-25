@@ -54,17 +54,7 @@ function agregarPlatoDemo() {
     }
 }
 
-// 4) EVENTOS: conectar botones con funciones
-document.getElementById("btnMostrar").addEventListener("click", () => {
- renderMenu();
-});
-
-document.getElementById("btnAgregar").addEventListener("click", () => {
- agregarPlatoDemo();
- renderMenu();
-});
-
-// FUNCIÓN: contar platos con stock mayor a 5
+// 4) FUNCIÓN: contar platos con stock mayor a 5
 function contarPlatosConStockMayorA5() {
     let contador = 0;
     for (let i = 0; i < menu.length; i++) {
@@ -75,10 +65,9 @@ function contarPlatosConStockMayorA5() {
     return contador;
     
 }
-// FUNCIÓN: Buscar platos por nombre
-function buscarPlatoPorNombre() {
-    const input = document.getElementById("inputBuscar");
-    const texto = input.value.toLowerCase();
+// 5) FUNCIÓN: Buscar platos por nombre
+function buscarPlatoPorNombre(nombre) {
+    const texto = nombre.toLowerCase();
     const output = document.getElementById("output2");
     let html = "<ul>";
     const platoEncontrado = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
@@ -90,7 +79,19 @@ function buscarPlatoPorNombre() {
     html += "</ul>";
     output.innerHTML = html;
 }
+
+// 4) EVENTOS: conectar botones con funciones
+document.getElementById("btnMostrar").addEventListener("click", () => {
+ renderMenu();
+});
+
+document.getElementById("btnAgregar").addEventListener("click", () => {
+ agregarPlatoDemo();
+ renderMenu();
+});
+
 //Botón buscar
 document.getElementById("btnBuscar").addEventListener("click", () => {
-    buscarPlatoPorNombre();
+    const input = document.getElementById("inputBuscar").value;
+    buscarPlatoPorNombre(input);
 });
