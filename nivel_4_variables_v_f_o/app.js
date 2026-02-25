@@ -96,3 +96,7 @@ function buscarPlatoPorNombre() {
     }
     output.innerHTML = html;
 }
+//Botón buscar
+document.getElementById("btnBuscar").addEventListener("click", () => {
+    buscarPlatoPorNombre();
+});
