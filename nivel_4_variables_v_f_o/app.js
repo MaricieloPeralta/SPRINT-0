@@ -137,3 +137,8 @@ document.getElementById("btnBuscar").addEventListener("click", () => {
     const input = document.getElementById("inputBuscar").value;
     buscarPlatoPorNombre(input);
 });
+
+//Botón stock bajo
+document.getElementById("btnStockBajo").addEventListener("click", () => {
+    filtrarStockBajo();
+});
