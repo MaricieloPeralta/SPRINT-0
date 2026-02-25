@@ -103,6 +103,25 @@ function filtrarStockBajo() {
     output.innerHTML = html;
 }
 
+function verResumen() {
+    const output = document.getElementById("output2");
+
+    const listaResumen = menu.map(plato => {
+        return `<li>${plato.nombre} — S/ ${plato.precio}</li>`;
+    });
+
+    let html = "<ul>";
+
+    for (let i = 0; i < listaResumen.length; i++) {
+        html += listaResumen[i];
+    }
+
+    html += "</ul>";
+    html += `<p>Total de platos: ${menu.length}</p>`;
+
+    output.innerHTML = html;
+}
+
 // 4) EVENTOS: conectar botones con funciones
 document.getElementById("btnMostrar").addEventListener("click", () => {
  renderMenu();
