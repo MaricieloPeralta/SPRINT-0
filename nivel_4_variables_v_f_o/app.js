@@ -142,3 +142,8 @@ document.getElementById("btnBuscar").addEventListener("click", () => {
 document.getElementById("btnStockBajo").addEventListener("click", () => {
     filtrarStockBajo();
 });
+
+//Botón resumen
+document.getElementById("btnResumen").addEventListener("click", () => {
+    verResumen();
+});
