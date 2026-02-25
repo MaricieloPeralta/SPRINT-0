@@ -82,18 +82,13 @@ function buscarPlatoPorNombre() {
     const output = document.getElementById("output2");
     output.innerHTML = "";
     let html = "<ul>";
-    let encontrado = false;
-    for (let i = 0; i < menu.length; i++) {
-        const plato = menu[i];
-        if (plato.nombre.toLowerCase().includes(texto)) {
-            html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
-            encontrado = true;
-        }
+    const platoEncontrado = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
+    if (platoEncontrado) {
+        html += `<li>${platoEncontrado.nombre} — S/ ${platoEncontrado.precio} — Stock: ${platoEncontrado.stock}</li>`;
+    } else {
+        html = "<p>No se encontraron resultados</p>";
     }
     html += "</ul>";
-    if (encontrado == false) {
-        html = "<p>No se encontraron resultados</p>"
-    }
     output.innerHTML = html;
 }
 //Botón buscar
