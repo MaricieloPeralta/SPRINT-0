@@ -75,3 +75,24 @@ function contarPlatosConStockMayorA5() {
     return contador;
     
 }
+// FUNCIÓN: Buscar platos por nombre
+function buscarPlatoPorNombre() {
+    const input = document.getElementById("inputBuscar");
+    const texto = input.value.toLowerCase();
+    const output = document.getElementById("output2");
+    output.innerHTML = "";
+    let html = "<ul>";
+    let encontrado = false;
+    for (let i = 0; i < menu.length; i++) {
+        const plato = menu[i];
+        if (plato.nombre.toLowerCase().includes(texto)) {
+            html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
+            encontrado = true;
+        }
+    }
+    html += "</ul>";
+    if (encontrado == false) {
+        html = "<p>No se encontraron resultados</p>"
+    }
+    output.innerHTML = html;
+}
