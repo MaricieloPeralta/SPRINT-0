@@ -29,16 +29,15 @@ let menu = [
 
 // 2) FUNCIÓN: renderizar (mostrar) el menú en pantalla
 function renderMenu() {
- const output = document.getElementById("output");
- output.innerHTML = ""; // limpiar
+    const output = document.getElementById("output");
+    output.innerHTML = ""; // limpiar
 
- // crear una lista HTML simple
- let html = "<ul>";
-
- for (let i = 0; i < menu.length; i++) {
-   const plato = menu[i];
-   html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
- }
+    // crear una lista HTML simple
+    let html = "<ul>";
+    for (let i = 0; i < menu.length; i++) {
+        const plato = menu[i];
+        html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
+    }
     html += "</ul>";
     html += `<p>Total de platos en el menú: ${menu.length}</p>`;
     output.innerHTML = html;
@@ -63,7 +62,7 @@ function contarPlatosConStockMayorA5() {
         }
     }
     return contador;
-    
+
 }
 // 5) FUNCIÓN: Buscar platos por nombre
 function buscarPlatoPorNombre(nombre) {
@@ -124,12 +123,12 @@ function verResumen() {
 
 // 4) EVENTOS: conectar botones con funciones
 document.getElementById("btnMostrar").addEventListener("click", () => {
- renderMenu();
+    renderMenu();
 });
 
 document.getElementById("btnAgregar").addEventListener("click", () => {
- agregarPlatoDemo();
- renderMenu();
+    agregarPlatoDemo();
+    renderMenu();
 });
 
 //Botón buscar
