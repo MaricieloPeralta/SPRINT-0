@@ -29,16 +29,26 @@ let menu = [
 
 // 2) FUNCIÓN: renderizar (mostrar) el menú en pantalla
 function renderMenu() {
- const output = document.getElementById("output");
- output.innerHTML = ""; // limpiar
+    const output = document.getElementById("output");
+    output.innerHTML = ""; // limpiar
 
- // crear una lista HTML simple
- let html = "<ul>";
+    // crear una lista HTML simple
+    let html = "<ul>";
+    for (let i = 0; i < menu.length; i++) {
+        const plato = menu[i];
+        let clase = "";
+        if (plato.stock == 0) {
+            clase = "agotado";
+            html += `<li class="${clase}">${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock} - Estado: ${clase} </li>`;
+        } else if (plato.stock <= 3) {
+            clase = "bajo";
+            html += `<li class="${clase}">${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock} - Estado: ${clase}</li>`;
+        } else {
+            clase = "normal";
+            html += `<li class="${clase}">${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock} - Estado: ${clase}</li>`;
+        }
 
- for (let i = 0; i < menu.length; i++) {
-   const plato = menu[i];
-   html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
- }
+    }
     html += "</ul>";
     html += `<p>Total de platos en el menú: ${menu.length}</p>`;
     output.innerHTML = html;
@@ -53,7 +63,30 @@ function agregarPlatoDemo() {
         platoAgregado = true;
     }
 }
-
+// Función verificar estado general
+function verificarEstadoGeneral() {
+    const output = document.getElementById("outputTiendita");
+    output.innerHTML = "";
+    let html = "<ul>";
+    let contadorPlatosAgotados = 0;
+    let contadorPlatosBajos = 0;
+    let contadorPlatosNormales = 0;
+    for (let i = 0; i < menu.length; i++) {
+        const plato = menu[i];
+        if (plato.stock == 0) {
+            contadorPlatosAgotados++;
+        } else if (plato.stock <= 3) {
+            contadorPlatosBajos++;
+        } else {
+            contadorPlatosNormales++;
+        }
+    }
+    html += `<li>Total de platos agotados: ${contadorPlatosAgotados}</li>`;
+    html += `<li>Total de platos con stock bajo: ${contadorPlatosBajos}</li>`;
+    html += `<li>Total de platos normales: ${contadorPlatosNormales}</li>`;
+    html += "</ul>";
+    output.innerHTML = html;
+}
 // 4) FUNCIÓN: contar platos con stock mayor a 5
 function contarPlatosConStockMayorA5() {
     let contador = 0;
@@ -63,7 +96,7 @@ function contarPlatosConStockMayorA5() {
         }
     }
     return contador;
-    
+
 }
 // 5) FUNCIÓN: Buscar platos por nombre
 function buscarPlatoPorNombre(nombre) {
@@ -124,12 +157,12 @@ function verResumen() {
 
 // 4) EVENTOS: conectar botones con funciones
 document.getElementById("btnMostrar").addEventListener("click", () => {
- renderMenu();
+    renderMenu();
 });
 
 document.getElementById("btnAgregar").addEventListener("click", () => {
- agregarPlatoDemo();
- renderMenu();
+    agregarPlatoDemo();
+    renderMenu();
 });
 
 //Botón buscar
@@ -157,36 +190,38 @@ document.getElementById("btnBuscarTiendita").addEventListener("click", () => {
 
     const plato = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
 
-    if (plato && plato.stock > 0) {
-        output.innerHTML = `
-            <p>
-                ${plato.nombre} — S/ ${plato.precio} <br>
-                Stock disponible: ${plato.stock}
-            </p>
-        `;
-
-        // Mostrar sección de compra
+    if (!plato) {
+        output.innerHTML = "<p>No existe el plato.</p>";
+        divCompra.style.display = "none";
+    }
+    else if (plato.stock > 0) {
+        output.innerHTML = `<p>${plato.nombre} — S/ ${plato.precio} <br> Stock disponible: ${plato.stock}</p>`;
         divCompra.style.display = "block";
     } else {
-        output.innerHTML = "<p>No hay stock o no existe el plato</p>";
+        output.innerHTML = "<p>No hay stock.</p>";
         divCompra.style.display = "none";
     }
 });
 document.getElementById("btnComprar").addEventListener("click", () => {
     const cantidad = Number(document.getElementById("inputCantidad").value);
     const output = document.getElementById("outputTiendita");
+    const btnFinal = document.getElementById("btnMostrarMenuDeNuevo");
 
     if (cantidad < 1) {
         alert("Ingresa una cantidad válida");
+        btnFinal.style.display = "none";
         return;
     }
-
+    else {
+        btnFinal.style.display = "block";
+    }
     // buscar el plato de nuevo
     const texto = document.getElementById("inputBuscarTiendita").value.toLowerCase();
     const plato = menu.find(p => p.nombre.toLowerCase().includes(texto));
 
     if (plato.stock < cantidad) {
         alert("No hay suficiente stock");
+        divFinal.style.display = "none";
         return;
     }
 
@@ -196,4 +231,6 @@ document.getElementById("btnComprar").addEventListener("click", () => {
 });
 document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
     renderMenu();
+    verificarEstadoGeneral();
+    document.getElementById("btrnMostrarMenuDeNuevo").style.display = "none";
 });

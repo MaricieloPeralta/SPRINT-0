@@ -1,29 +1,46 @@
 <html lang="es">
+
 <head>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>CENTRAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CENTRAL</title>
+    <style>
+        .normal {
+            color: black;
+        }
+
+        .bajo {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .agotado {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
- <h1>Menú del Restaurante</h1>
+    <h1>Menú del Restaurante</h1>
 
- <button id="btnMostrar">Mostrar menú</button>
- <button id="btnAgregar">Agregar plato demo</button>
+    <button id="btnMostrar">Mostrar menú</button>
+    <button id="btnAgregar">Agregar plato demo</button>
 
- <div id="output"></div>
-<hr>
+    <div id="output"></div>
+    <hr>
 
-<h2>Herramientas</h2>
+    <h2>Herramientas</h2>
 
-<input id="inputBuscar" placeholder="Buscar plato por nombre" />
-<button id="btnBuscar">Buscar</button>
+    <input id="inputBuscar" placeholder="Buscar plato por nombre" />
+    <button id="btnBuscar">Buscar</button>
 
-<button id="btnStockBajo">Ver stock bajo (&lt;= 3)</button>
+    <button id="btnStockBajo">Ver stock bajo (&lt;= 3)</button>
 
-<button id="btnResumen">Ver resumen</button>
-<div id="output2"></div>
+    <button id="btnResumen">Ver resumen</button>
+    <div id="output2"></div>
 
-<hr>
+    <hr>
     <h2>TIENDITA VIRTUAL</h2>
     <p>Bienvenido a la tiendita virtual de Central!!!
         <br>Compra aquí ingresando el plato que deseas y luego su cantidad.
@@ -40,9 +57,10 @@
         <button id="btnComprar">Comprar</button>
         <br>
     </div>
-    <br>
-    <button id="btnMostrarMenuDeNuevo">Finalizar Compra</button>
 
-<script src="./app.js"></script>
+    <button id="btnMostrarMenuDeNuevo" style="display:none">Finalizar Compra</button>
+    <br>
+    <script src="./app.js"></script>
 </body>
+
 </html>
