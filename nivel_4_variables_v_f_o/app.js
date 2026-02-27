@@ -171,6 +171,13 @@ document.getElementById("btnBuscarTiendita").addEventListener("click", () => {
         output.innerHTML = "<p>No existe el plato.</p>";
         divCompra.style.display = "none";
     }
+    else if (plato.stock > 0) {
+        output.innerHTML = `<p>${plato.nombre} — S/ ${plato.precio} <br> Stock disponible: ${plato.stock}</p>`;
+        divCompra.style.display = "block";
+    } else {
+        output.innerHTML = "<p>No hay stock.</p>";
+        divCompra.style.display = "none";
+    }
 });
 document.getElementById("btnComprar").addEventListener("click", () => {
     const cantidad = Number(document.getElementById("inputCantidad").value);
