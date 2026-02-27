@@ -167,18 +167,8 @@ document.getElementById("btnBuscarTiendita").addEventListener("click", () => {
 
     const plato = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
 
-    if (plato && plato.stock > 0) {
-        output.innerHTML = `
-            <p>
-                ${plato.nombre} — S/ ${plato.precio} <br>
-                Stock disponible: ${plato.stock}
-            </p>
-        `;
-
-        // Mostrar sección de compra
-        divCompra.style.display = "block";
-    } else {
-        output.innerHTML = "<p>No hay stock o no existe el plato</p>";
+    if (!plato) {
+        output.innerHTML = "<p>No existe el plato.</p>";
         divCompra.style.display = "none";
     }
 });
