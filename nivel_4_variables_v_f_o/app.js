@@ -232,4 +232,5 @@ document.getElementById("btnComprar").addEventListener("click", () => {
 document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
     renderMenu();
     verificarEstadoGeneral();
+    document.getElementById("btrnMostrarMenuDeNuevo").style.display = "none";
 });
