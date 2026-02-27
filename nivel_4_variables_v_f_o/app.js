@@ -182,18 +182,23 @@ document.getElementById("btnBuscarTiendita").addEventListener("click", () => {
 document.getElementById("btnComprar").addEventListener("click", () => {
     const cantidad = Number(document.getElementById("inputCantidad").value);
     const output = document.getElementById("outputTiendita");
+    const btnFinal = document.getElementById("btnMostrarMenuDeNuevo");
 
     if (cantidad < 1) {
         alert("Ingresa una cantidad válida");
+        btnFinal.style.display = "none";
         return;
     }
-
+    else {
+        btnFinal.style.display = "block";
+    }
     // buscar el plato de nuevo
     const texto = document.getElementById("inputBuscarTiendita").value.toLowerCase();
     const plato = menu.find(p => p.nombre.toLowerCase().includes(texto));
 
     if (plato.stock < cantidad) {
         alert("No hay suficiente stock");
+        divFinal.style.display = "none";
         return;
     }
 
