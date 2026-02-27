@@ -63,7 +63,30 @@ function agregarPlatoDemo() {
         platoAgregado = true;
     }
 }
-
+// Función verificar estado general
+function verificarEstadoGeneral() {
+    const output = document.getElementById("outputTiendita");
+    output.innerHTML = "";
+    let html = "<ul>";
+    let contadorPlatosAgotados = 0;
+    let contadorPlatosBajos = 0;
+    let contadorPlatosNormales = 0;
+    for (let i = 0; i < menu.length; i++) {
+        const plato = menu[i];
+        if (plato.stock == 0) {
+            contadorPlatosAgotados++;
+        } else if (plato.stock <= 3) {
+            contadorPlatosBajos++;
+        } else {
+            contadorPlatosNormales++;
+        }
+    }
+    html += `<li>Total de platos agotados: ${contadorPlatosAgotados}</li>`;
+    html += `<li>Total de platos con stock bajo: ${contadorPlatosBajos}</li>`;
+    html += `<li>Total de platos normales: ${contadorPlatosNormales}</li>`;
+    html += "</ul>";
+    output.innerHTML = html;
+}
 // 4) FUNCIÓN: contar platos con stock mayor a 5
 function contarPlatosConStockMayorA5() {
     let contador = 0;
@@ -203,4 +226,5 @@ document.getElementById("btnComprar").addEventListener("click", () => {
 });
 document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
     renderMenu();
+    verificarEstadoGeneral();
 });
