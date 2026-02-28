@@ -42,17 +42,6 @@ function renderEstadoGeneral() {
     output.innerHTML = html;
 }
 
-function renderEstadoGeneral() {
-    const output = document.getElementById("outputTiendita");
-    const { contadorPlatosAgotados, contadorPlatosBajos, contadorPlatosNormales } = verificarEstadoGeneral();
-    let html = "<ul>";
-    html += `<li>Total de platos agotados: ${contadorPlatosAgotados}</li>`;
-    html += `<li>Total de platos con stock bajo: ${contadorPlatosBajos}</li>`;
-    html += `<li>Total de platos normales: ${contadorPlatosNormales}</li>`;
-    html += "</ul>";
-    output.innerHTML = html;
-}
-
 export function conectarEventos() {
 
     document.getElementById("btnMostrar").addEventListener("click", () => {
