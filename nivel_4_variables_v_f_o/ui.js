@@ -89,12 +89,12 @@ export function conectarEventos() {
         const listaResumen = verResumen();
         const output = document.getElementById("output2");
 
-        let html =
-            html += "<ul>";
+        let html = "<ul>";
         for (let i = 0; i < listaResumen.length; i++) {
             html += `<li>${listaResumen[i]}</li>`;
         }
-        html += "</ul>"; `<p>Total de platos: ${menu.length}</p>`;
+        html += "</ul>";
+        html += `<p>Total de platos: ${menu.length}</p>`;
         output.innerHTML = html;
     });
 
