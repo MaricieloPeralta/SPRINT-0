@@ -98,7 +98,7 @@ function contarPlatosConStockMayorA5() {
     return contador;
 
 }
-// 5) FUNCIÓN: Buscar platos por nombre
+// FUNCIÓN: Buscar platos por nombre
 function buscarPlatoPorNombre(nombre) {
     const texto = nombre.toLowerCase();
     const output = document.getElementById("output2");
