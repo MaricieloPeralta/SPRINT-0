@@ -1,8 +1,29 @@
-// Función verificar estado general
-function verificarEstadoGeneral() {
-    const output = document.getElementById("outputTiendita");
-    output.innerHTML = "";
-    let html = "<ul>";
+import { menu } from "./menu.js";
+
+export function contarPlatosConStockMayorA5() {
+    let contador = 0;
+    for (let i = 0; i < menu.length; i++) {
+        if (menu[i].stock > 5) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+export function buscarPlatoPorNombre(nombre) {
+    const texto = nombre.toLowerCase();
+    return menu.find(plato => plato.nombre.toLowerCase().includes(texto));
+}
+
+export function filtrarStockBajo() {
+    return menu.filter(plato => plato.stock <= 3);
+}
+
+export function verResumen() {
+    return menu.map(plato => `${plato.nombre} — S/ ${plato.precio}`);
+}
+
+export function verificarEstadoGeneral() {
     let contadorPlatosAgotados = 0;
     let contadorPlatosBajos = 0;
     let contadorPlatosNormales = 0;
@@ -16,46 +37,17 @@ function verificarEstadoGeneral() {
             contadorPlatosNormales++;
         }
     }
-    html += `<li>Total de platos agotados: ${contadorPlatosAgotados}</li>`;
-    html += `<li>Total de platos con stock bajo: ${contadorPlatosBajos}</li>`;
-    html += `<li>Total de platos normales: ${contadorPlatosNormales}</li>`;
-    html += "</ul>";
-    output.innerHTML = html;
-}
-// FUNCIÓN: Buscar platos por nombre
-function buscarPlatoPorNombre(nombre) {
-    const texto = nombre.toLowerCase();
-    const output = document.getElementById("output2");
-    let html = "<ul>";
-    const platoEncontrado = menu.find(plato => plato.nombre.toLowerCase().includes(texto));
-    if (platoEncontrado) {
-        html += `<li>${platoEncontrado.nombre} — S/ ${platoEncontrado.precio} — Stock: ${platoEncontrado.stock}</li>`;
-    } else {
-        html = "<p>No se encontraron resultados</p>";
-    }
-    html += "</ul>";
-    output.innerHTML = html;
+    return { contadorPlatosAgotados, contadorPlatosBajos, contadorPlatosNormales };
 }
 
-// FUNCIÓN: Ver stock bajo (<= 3)
-function filtrarStockBajo() {
-    const output = document.getElementById("output2");
-    output.innerHTML = "";
+export function venderPlato(nombre, cantidad) {
+    const plato = buscarPlatoPorNombre(nombre);
 
-    const platosStockBajo = menu.filter(plato => plato.stock <= 3);
+    if (!plato) return { ok: false, mensaje: "No existe el plato" };
+    if (plato.stock === 0) return { ok: false, mensaje: "No hay stock" };
+    if (cantidad < 1) return { ok: false, mensaje: "Ingresa una cantidad válida" };
+    if (plato.stock < cantidad) return { ok: false, mensaje: "No hay suficiente stock" };
 
-    if (platosStockBajo.length === 0) {
-        output.innerHTML = "<p>No hay platos con stock bajo</p>";
-        return;
-    }
-
-    let html = "<ul>";
-
-    for (let i = 0; i < platosStockBajo.length; i++) {
-        const plato = platosStockBajo[i];
-        html += `<li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li>`;
-    }
-
-    html += "</ul>";
-    output.innerHTML = html;
+    plato.stock = plato.stock - cantidad; // exactamente como lo tenías
+    return { ok: true, mensaje: `Compraste ${cantidad} ${plato.nombre} exitosamente`, plato };
 }
