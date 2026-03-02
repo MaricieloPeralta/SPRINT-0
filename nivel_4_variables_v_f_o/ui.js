@@ -4,7 +4,8 @@ import {
     filtrarStockBajo,
     verResumen,
     verificarEstadoGeneral,
-    venderPlato
+    venderPlato,
+    venderPlatoAsync
 } from "./operaciones.js";
 
 export function renderMenu() {
