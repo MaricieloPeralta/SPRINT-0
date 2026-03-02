@@ -129,6 +129,7 @@ export function conectarEventos() {
             return;
         }
 
+
         output.innerHTML = `<p>${resultado.mensaje}</p>`;
         document.getElementById("output3").style.display = "none";
         document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
