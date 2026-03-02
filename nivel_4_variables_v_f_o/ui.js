@@ -56,16 +56,21 @@ export function conectarEventos() {
 
     document.getElementById("btnBuscar").addEventListener("click", () => {
         const input = document.getElementById("inputBuscar").value;
-        const plato = buscarPlatoPorNombre(input);
-        const output = document.getElementById("output2");
 
-        if (plato) {
-            output.innerHTML = `<ul><li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li></ul>`;
-        } else {
-            output.innerHTML = "<p>No se encontraron resultados</p>";
+        if (!input) {
+            alert("Por favor, ingresa un nombre de plato.");
+            return;
+        }
+        else {
+            const plato = buscarPlatoPorNombre(input);
+            const output = document.getElementById("output2");
+            if (plato) {
+                output.innerHTML = `<ul><li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li></ul>`;
+            } else {
+                output.innerHTML = "<p>No se encontraron resultados</p>";
+            }
         }
     });
-
 
     document.getElementById("btnStockBajo").addEventListener("click", () => {
         const platosStockBajo = filtrarStockBajo();
