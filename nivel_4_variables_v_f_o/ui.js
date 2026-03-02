@@ -122,22 +122,12 @@ export function conectarEventos() {
         const cantidad = Number(document.getElementById("inputCantidad").value);
         const output = document.getElementById("outputTiendita");
 
-        const resultado = venderPlato(texto, cantidad);
+        try {
+            output.innerHTML = `<p class="procesando">Procesando pedido...</p>`;
 
-        if (!resultado.ok) {
-            alert(resultado.mensaje);
-            return;
         }
+        catch (error) {
 
-
-        output.innerHTML = `<p>${resultado.mensaje}</p>`;
-        document.getElementById("output3").style.display = "none";
-        document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
-    });
-
-    document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
-        renderMenu();
-        renderEstadoGeneral();
-        document.getElementById("btnMostrarMenuDeNuevo").style.display = "none";
+        }
     });
 }
