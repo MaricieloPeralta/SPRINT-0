@@ -117,17 +117,25 @@ export function conectarEventos() {
         }
     });
 
-    document.getElementById("btnComprar").addEventListener("click", () => {
+    document.getElementById("btnComprar").addEventListener("click", async () => {
         const texto = document.getElementById("inputBuscarTiendita").value;
         const cantidad = Number(document.getElementById("inputCantidad").value);
         const output = document.getElementById("outputTiendita");
 
         try {
             output.innerHTML = `<p class="procesando">Procesando pedido...</p>`;
+            document.getElementById("output3").style.display = "none";
+
+            const mensaje = await venderPlatoAsync(texto, cantidad);
+
+            output.innerHTML = `<p class="exito">${mensaje}</p>`;
+            document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
+            renderMenu();
 
         }
         catch (error) {
-
+            output.innerHTML = `<p class="error">${error.message || error}</p>`;
+            document.getElementById("output3").style.display = "block";
         }
     });
 }
