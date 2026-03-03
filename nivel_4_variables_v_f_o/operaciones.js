@@ -69,7 +69,11 @@ export async function venderPlatoAsync(nombre, cantidad) {
     if (!resultado.ok) {
         throw new Error(resultado.mensaje);
     }
-
-    const respuesta = await simularRespuestaServidor(resultado.mensaje);
-    return respuesta;
+    try {
+        const respuesta = await simularRespuestaServidor(resultado.mensaje);
+        return respuesta;
+    } catch (error) {
+        resultado.plato.stock += cantidad;
+        throw new Error(error);
+    }
 }
