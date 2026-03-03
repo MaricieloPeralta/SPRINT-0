@@ -51,6 +51,7 @@ export function venderPlato(nombre, cantidad) {
     plato.stock = plato.stock - cantidad;
     return { ok: true, mensaje: `Compraste ${cantidad} ${plato.nombre} exitosamente`, plato };
 }
+
 export function simularRespuestaServidor(resultado) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -63,6 +64,7 @@ export function simularRespuestaServidor(resultado) {
         }, 2000);
     });
 }
+
 export async function venderPlatoAsync(nombre, cantidad) {
     const resultado = venderPlato(nombre, cantidad);
 
@@ -77,5 +79,4 @@ export async function venderPlatoAsync(nombre, cantidad) {
         throw new Error(error);
     }
 }
-
 
