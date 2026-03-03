@@ -1,0 +1,29 @@
+.normal {
+    color: black;
+}
+
+.bajo {
+    color: orange;
+    font-weight: bold;
+}
+
+.agotado {
+    color: red;
+    font-weight: bold;
+}
+
+h1 {
+    color: orange;
+}
+
+.procesando {
+    color: blue;
+}
+
+.exito {
+    color: green;
+}
+
+.error {
+    color: red;
+}
