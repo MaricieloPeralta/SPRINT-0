@@ -4,7 +4,6 @@ import {
     filtrarStockBajo,
     verResumen,
     verificarEstadoGeneral,
-    venderPlato,
     venderPlatoAsync
 } from "./operaciones.js";
 
@@ -135,12 +134,16 @@ export function conectarEventos() {
 
             output.innerHTML = `<p class="exito">${mensaje}</p>`;
             document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
-            renderMenu();
 
         }
         catch (error) {
             output.innerHTML = `<p class="error">${error.message || error}</p>`;
             document.getElementById("output3").style.display = "block";
         }
+    });
+    document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
+        renderMenu();
+        document.getElementById("btnMostrarMenuDeNuevo").style.display = "none";
+        renderEstadoGeneral();
     });
 }
