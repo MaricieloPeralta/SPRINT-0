@@ -4,7 +4,7 @@ import {
     filtrarStockBajo,
     verResumen,
     verificarEstadoGeneral,
-    venderPlato
+    venderPlatoAsync
 } from "./operaciones.js";
 
 export function renderMenu() {
@@ -54,17 +54,21 @@ export function conectarEventos() {
     });
 
     document.getElementById("btnBuscar").addEventListener("click", () => {
-        const input = document.getElementById("inputBuscar").value;
-        const plato = buscarPlatoPorNombre(input);
+        const input = document.getElementById("inputBuscar").value.trim();
         const output = document.getElementById("output2");
 
+        if (!input) {
+            alert("Por favor, ingresa un nombre de plato.");
+            return;
+        }
+
+        const plato = buscarPlatoPorNombre(input);
         if (plato) {
             output.innerHTML = `<ul><li>${plato.nombre} — S/ ${plato.precio} — Stock: ${plato.stock}</li></ul>`;
         } else {
             output.innerHTML = "<p>No se encontraron resultados</p>";
         }
     });
-
 
     document.getElementById("btnStockBajo").addEventListener("click", () => {
         const platosStockBajo = filtrarStockBajo();
@@ -117,27 +121,29 @@ export function conectarEventos() {
         }
     });
 
-    document.getElementById("btnComprar").addEventListener("click", () => {
+    document.getElementById("btnComprar").addEventListener("click", async () => {
         const texto = document.getElementById("inputBuscarTiendita").value;
         const cantidad = Number(document.getElementById("inputCantidad").value);
         const output = document.getElementById("outputTiendita");
 
-        const resultado = venderPlato(texto, cantidad);
+        try {
+            output.innerHTML = `<p class="procesando">Procesando pedido...</p>`;
+            document.getElementById("output3").style.display = "none";
 
-        if (!resultado.ok) {
-            alert(resultado.mensaje);
-            return;
+            const mensaje = await venderPlatoAsync(texto, cantidad);
+
+            output.innerHTML = `<p class="exito">${mensaje}</p>`;
+            document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
+
         }
-
-
-        output.innerHTML = `<p>${resultado.mensaje}</p>`;
-        document.getElementById("output3").style.display = "none";
-        document.getElementById("btnMostrarMenuDeNuevo").style.display = "block";
+        catch (error) {
+            output.innerHTML = `<p class="error">${error.message || error}</p>`;
+            document.getElementById("output3").style.display = "block";
+        }
     });
-
     document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
         renderMenu();
-        renderEstadoGeneral();
         document.getElementById("btnMostrarMenuDeNuevo").style.display = "none";
+        renderEstadoGeneral();
     });
 }
