@@ -107,6 +107,7 @@ export function conectarEventos() {
         const output = document.getElementById("outputTiendita");
         const divCompra = document.getElementById("output3");
 
+        if (!texto) return output.innerHTML = `<p class="error">Escribe un nombre de plato</p>`;
         const plato = buscarPlatoPorNombre(texto);
 
         if (!plato) {

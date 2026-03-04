@@ -61,7 +61,7 @@ export function simularRespuestaServidor(resultado) {
     });
 }
 export async function venderPlatoAsync(nombre, cantidad) {
-    const resultado = buscarPlatoPorNombre(nombre);
+    const plato = buscarPlatoPorNombre(nombre);
     if (!plato) throw new ErrorNegocio("No existe el plato");
     if (plato.stock === 0) throw new ErrorNegocio("No hay stock");
     if (plato.stock < cantidad) throw new ErrorNegocio("No hay suficiente stock");
@@ -69,9 +69,9 @@ export async function venderPlatoAsync(nombre, cantidad) {
     plato.stock -= cantidad;
 
     try {
-        return await simularRespuestaServidor(resultado.mensaje);
+        return await simularRespuestaServidor(`Compraste ${cantidad} ${plato.nombre} exitosamente`);
     } catch (error) {
-        resultado.plato.stock += cantidad;
+        plato.stock += cantidad;
         throw new Error(error);
     }
 }
