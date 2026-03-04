@@ -48,10 +48,9 @@ export function venderPlato(nombre, cantidad) {
     if (cantidad < 1) return { ok: false, mensaje: "Ingresa una cantidad válida" };
     if (plato.stock < cantidad) return { ok: false, mensaje: "No hay suficiente stock" };
 
-    plato.stock = plato.stock - cantidad;
+    plato.stock = plato.stock - cantidad; // exactamente como lo tenías
     return { ok: true, mensaje: `Compraste ${cantidad} ${plato.nombre} exitosamente`, plato };
 }
-
 export function simularRespuestaServidor(resultado) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -64,7 +63,6 @@ export function simularRespuestaServidor(resultado) {
         }, 2000);
     });
 }
-
 export async function venderPlatoAsync(nombre, cantidad) {
     const resultado = venderPlato(nombre, cantidad);
 
@@ -79,4 +77,3 @@ export async function venderPlatoAsync(nombre, cantidad) {
         throw new Error(error);
     }
 }
-
