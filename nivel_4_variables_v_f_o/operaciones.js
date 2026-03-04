@@ -37,17 +37,6 @@ export function verificarEstadoGeneral() {
     return { contadorPlatosAgotados, contadorPlatosBajos, contadorPlatosNormales };
 }
 
-//export function venderPlato(nombre, cantidad) {
-//const plato = buscarPlatoPorNombre(nombre);
-
-//if (!plato) return { ok: false, mensaje: "No existe el plato" };
-//if (plato.stock === 0) return { ok: false, mensaje: "No hay stock" };
-//if (cantidad < 1) return { ok: false, mensaje: "Ingresa una cantidad válida" };
-//if (plato.stock < cantidad) return { ok: false, mensaje: "No hay suficiente stock" };
-
-//plato.stock = plato.stock - cantidad;
-//return { ok: true, mensaje: `Compraste ${cantidad} ${plato.nombre} exitosamente`, plato };
-//}
 export function simularRespuestaServidor(resultado) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
