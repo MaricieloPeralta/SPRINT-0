@@ -48,6 +48,7 @@ export function verificarEstadoGeneral() {
 //plato.stock = plato.stock - cantidad;
 //return { ok: true, mensaje: `Compraste ${cantidad} ${plato.nombre} exitosamente`, plato };
 //}
+
 export function simularRespuestaServidor(resultado) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
