@@ -61,10 +61,9 @@ export function simularRespuestaServidor(resultado) {
     });
 }
 export async function venderPlatoAsync(nombre, cantidad) {
-    const resultado = venderPlato(nombre);
+    const resultado = buscarPlatoPorNombre(nombre);
     if (!plato) throw new ErrorNegocio("No existe el plato");
     if (plato.stock === 0) throw new ErrorNegocio("No hay stock");
-    if (cantidad < 1) throw new ErrorNegocio("Ingresa una cantidad válida");
     if (plato.stock < cantidad) throw new ErrorNegocio("No hay suficiente stock");
 
     plato.stock -= cantidad;
