@@ -4,7 +4,7 @@ import {
     filtrarStockBajo,
     verResumen,
     verificarEstadoGeneral,
-    venderPlatoAsync
+    venderPlatoAsync,
 } from "./operaciones.js";
 
 export function renderMenu() {
@@ -107,6 +107,7 @@ export function conectarEventos() {
         const output = document.getElementById("outputTiendita");
         const divCompra = document.getElementById("output3");
 
+        if (!texto) return output.innerHTML = `<p class="error">Escribe un nombre de plato</p>`;
         const plato = buscarPlatoPorNombre(texto);
 
         if (!plato) {
@@ -126,6 +127,8 @@ export function conectarEventos() {
         const cantidad = Number(document.getElementById("inputCantidad").value);
         const output = document.getElementById("outputTiendita");
 
+        if (!texto) return output.innerHTML = `<p class="error">Escribe un nombre de plato</p>`;
+
         try {
             output.innerHTML = `<p class="procesando">Procesando pedido...</p>`;
             document.getElementById("output3").style.display = "none";
@@ -137,9 +140,14 @@ export function conectarEventos() {
 
         }
         catch (error) {
-            output.innerHTML = `<p class="error">${error.message || error}</p>`;
             document.getElementById("output3").style.display = "block";
+            if (error.name === "ErrorNegocio") {
+                output.innerHTML = `<p class="error">Advertencia: ${error.message}</p>`;
+            } else {
+                output.innerHTML = `<p class="error">Error del sistema: ${error.message}</p>`;
+            }
         }
+
     });
     document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
         renderMenu();
