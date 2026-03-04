@@ -1,15 +1,5 @@
 import { menu } from "./menu.js";
 
-export function contarPlatosConStockMayorA5() {
-    let contador = 0;
-    for (let i = 0; i < menu.length; i++) {
-        if (menu[i].stock > 5) {
-            contador++;
-        }
-    }
-    return contador;
-}
-
 export function buscarPlatoPorNombre(nombre) {
     const texto = nombre.toLowerCase();
     return menu.find(plato => plato.nombre.toLowerCase().includes(texto));
