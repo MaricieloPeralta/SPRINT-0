@@ -126,6 +126,10 @@ export function conectarEventos() {
         const cantidad = Number(document.getElementById("inputCantidad").value);
         const output = document.getElementById("outputTiendita");
 
+        if (!texto) return output.innerHTML = `<p class="error">Escribe un nombre de plato</p>`;
+        if (cantidad < 1) return output.innerHTML = `<p class="error">Ingresa una cantidad válida</p>`;
+
+
         try {
             output.innerHTML = `<p class="procesando">Procesando pedido...</p>`;
             document.getElementById("output3").style.display = "none";
