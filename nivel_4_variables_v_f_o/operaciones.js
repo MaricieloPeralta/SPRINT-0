@@ -1,5 +1,12 @@
 import { menu } from "./menu.js";
 
+export class ErrorNegocio extends Error {
+    constructor(mensaje) {
+        super(mensaje);
+        this.name = "ErrorNegocio";
+    }
+}
+
 export function buscarPlatoPorNombre(nombre) {
     const texto = nombre.toLowerCase();
     return menu.find(plato => plato.nombre.toLowerCase().includes(texto));
