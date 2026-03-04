@@ -4,7 +4,7 @@ import {
     filtrarStockBajo,
     verResumen,
     verificarEstadoGeneral,
-    venderPlatoAsync
+    venderPlatoAsync,
 } from "./operaciones.js";
 
 export function renderMenu() {
@@ -142,9 +142,14 @@ export function conectarEventos() {
 
         }
         catch (error) {
-            output.innerHTML = `<p class="error">${error.message || error}</p>`;
             document.getElementById("output3").style.display = "block";
+            if (error.name === "ErrorNegocio") {
+                output.innerHTML = `<p class="error">Advertencia: ${error.message}</p>`;
+            } else {
+                output.innerHTML = `<p class="error">Error del sistema: ${error.message}</p>`;
+            }
         }
+
     });
     document.getElementById("btnMostrarMenuDeNuevo").addEventListener("click", () => {
         renderMenu();
